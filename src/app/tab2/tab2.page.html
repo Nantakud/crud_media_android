@@ -1,0 +1,59 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Search
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <ion-list>
+    <ion-radio-group [(ngModel)]="criterion" value="name">
+      <ion-list-header>
+        <ion-label>
+          What do you wanna search for?
+        </ion-label>
+      </ion-list-header>
+  
+      <ion-item>
+        <ion-label>Type</ion-label>
+        <ion-radio value="type"></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Name</ion-label>
+        <ion-radio value="name"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+  <br>
+
+  <ion-item>
+    <ion-label position="floating">Write here the {{criterion}}</ion-label>
+    <ion-input [(ngModel)]="selector" required></ion-input>
+  </ion-item>
+
+  <ion-button size="large" shape="round" expand="block" (click)="search()">search it!</ion-button>
+  
+  <div [hidden]="isHidden">
+    <h2 style="text-align: center">Media list</h2>
+
+    <ion-grid fixed="true">
+      <ion-row>
+        <ion-col> <h5>ID</h5> </ion-col>
+        <ion-col> <h5>Name</h5> </ion-col>
+        <ion-col> <h5>Type</h5> </ion-col>
+        <ion-col> <h5>Publisher</h5> </ion-col>
+      </ion-row>
+      <ion-row *ngFor="let m of mySelection">
+        <ion-col>{{m.id}}</ion-col>
+        <ion-col>{{m.name}}</ion-col>
+        <ion-col> {{m.type}} </ion-col>
+        <ion-col> {{m.publisher}} </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+
+</ion-content>
