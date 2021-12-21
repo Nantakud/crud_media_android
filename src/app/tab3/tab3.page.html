@@ -1,8 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Update
-    </ion-title>
+    <ion-title> Update </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -10,12 +8,12 @@
   <div [hidden]="isHidden">
     <h2 style="text-align: center">Media list</h2>
 
-    <ion-grid fixed="true">
+    <ion-grid class="ion-padding-horizontal" fixed="true">
       <ion-row>
-        <ion-col> <h5>ID</h5> </ion-col>
-        <ion-col> <h5>Name</h5> </ion-col>
-        <ion-col> <h5>Type</h5> </ion-col>
-        <ion-col> <h5>Publisher</h5> </ion-col>
+        <ion-col> <h4>ID</h4> </ion-col>
+        <ion-col> <h4>Name</h4> </ion-col>
+        <ion-col> <h4>Type</h4> </ion-col>
+        <ion-col> <h4>Publisher</h4> </ion-col>
       </ion-row>
       <ion-row *ngFor="let m of myMedia">
         <ion-col>{{m.id}}</ion-col>
@@ -24,42 +22,62 @@
         <ion-col> {{m.publisher}} </ion-col>
       </ion-row>
     </ion-grid>
-
   </div>
 
-  <ion-button size="large" shape="round" expand="block" (click)="displayMedia()">{{displayButton}}</ion-button>
+  <ion-button
+    class="ion-margin-vertical"
+    size="large"
+    shape="round"
+    expand="block"
+    (click)="displayMedia()"
+    >{{displayButton}}</ion-button
+  >
 
-  <h2>Update a media</h2>
+  <h2 class="ion-margin-horizontal">Update a media</h2>
   <ion-item>
-    <ion-label position="floating">Which media would you like to update? (by ID)</ion-label>
+    <ion-label position="floating"
+      >Which media would you like to update? (by ID)</ion-label
+    >
     <ion-input [(ngModel)]="id" required></ion-input>
   </ion-item>
 
-  <h5>Write your updates. Please fill all fields</h5>
+  <h5 class="ion-margin-horizontal">Write the new info</h5>
   <form #myForm="ngForm">
-    <ion-item>
+    <ion-item class="ion-margin-top">
       <ion-label position="floating">Write Name</ion-label>
       <ion-input [(ngModel)]="name" required name="nameField"></ion-input>
     </ion-item>
 
-    <ion-item>
+    <ion-item class="ion-margin-top">
       <ion-label>Write Type</ion-label>
-      <ion-select [(ngModel)]="type" okText="Ok" cancelText="Never mind" required name="typeField">
-        <ion-select-option  value="Video">Video</ion-select-option>
-        <ion-select-option  value="Game">Game</ion-select-option>
-        <ion-select-option  value="Music">Music</ion-select-option>
-        <ion-select-option  value="Other">Other</ion-select-option>
+      <ion-select
+        [(ngModel)]="type"
+        okText="Ok"
+        cancelText="Never mind"
+        required
+        name="typeField"
+      >
+        <ion-select-option value="Video">Video</ion-select-option>
+        <ion-select-option value="Game">Game</ion-select-option>
+        <ion-select-option value="Music">Music</ion-select-option>
+        <ion-select-option value="Other">Other</ion-select-option>
       </ion-select>
     </ion-item>
 
-    <ion-item>
+    <ion-item class="ion-margin-top">
       <ion-label position="floating">Write Publisher </ion-label>
       <ion-input [(ngModel)]="publisher" required name="publField"></ion-input>
     </ion-item>
-</form>
+  </form>
 
-
-<ion-button size="large" shape="round" expand="block"  *ngIf="myForm.valid" (click)="updateMedia()">Update it</ion-button>
-All field are mandatory!
-
+  <ion-button
+    class="ion-margin-vertical"
+    size="large"
+    shape="round"
+    expand="block"
+    *ngIf="myForm.valid"
+    (click)="updateMedia()"
+    >Update it</ion-button
+  >
+  <h6 class="ion-padding-end ion-text-end">All field are mandatory!</h6>
 </ion-content>
